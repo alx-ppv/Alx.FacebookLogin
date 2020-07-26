@@ -1,10 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputType>Library</OutputType>
+    <IsPackable>true</IsPackable>
     <PackageId>Alx.FacebookLogin</PackageId>
+    <Description>ASP.NET Core middleware for flexible Facebook login</Description>
+    <Title>Alx.FacebookLogin</Title>
     <Version>1.0.0</Version>
     <Authors>Aleksandar Popov</Authors>
     <Company>Alx</Company>
+    <RepositoryUrl>https://github.com/alx-ppv/Alx.FacebookLogin</RepositoryUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\LICENSE" Pack="true" PackagePath=""/>
+  </ItemGroup>
 </Project>
