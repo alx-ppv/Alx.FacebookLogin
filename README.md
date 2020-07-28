@@ -1,6 +1,6 @@
 # Alx.FacebookLogin
 ---
-[![License](http://img.shields.io/:license-MIT-blue.svg)](https://licenses.nuget.org/MIT) [![NuGet Badge](https://buildstats.info/nuget/Alx.FacebookLogin)](https://www.nuget.org/packages/Alx.FacebookLogin/) 
+[![License](https://img.shields.io/:license-MIT-blue.svg)](https://licenses.nuget.org/MIT) [![NuGet Badge](https://buildstats.info/nuget/Alx.FacebookLogin)](https://www.nuget.org/packages/Alx.FacebookLogin/) 
 
 Easy to use ASP.NET Core middleware that allows more control over the Facebook login compared to the built-in implementation.
 
