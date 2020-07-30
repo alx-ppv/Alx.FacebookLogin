@@ -27,15 +27,10 @@ namespace Alx.FacebookLogin
         public static void UseFacebookLogin(this IApplicationBuilder app)
         {
             var fbOptions = app.ApplicationServices.GetService<FacebookLoginOptions>();
-            var builder = new RouteBuilder(app);
-            builder.MapMiddlewareGet(fbOptions.Route, appBuilder =>
+            app.UseWhen(context => context.Request.Method == "GET" && context.Request.Path.Equals(fbOptions.Route), appBuilder =>
             {
-                appBuilder.UseRouting();
                 appBuilder.UseMiddleware<FacebookLoginMiddleware>();
-                appBuilder.UseEndpoints(endpoints => endpoints.MapControllers());
             });
-
-            app.UseRouter(builder.Build());
         }
 
         internal static async Task<TValue> SendAsyncEx<TValue>(this HttpClient client, HttpRequestMessage message)
