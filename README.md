@@ -67,7 +67,45 @@ https://www.facebook.com/v6.0/dialog/oauth?client_id=${YOUR-APP-ID}&scope=email&
 2. If the user has granted access, you will recieve a code in the provided redirect URI. Make a GET request to the controller with a query parameter 'code', like ```{BACKEND-URL}/api/session/facebook?code={FACEBOOK-CODE}```
 
 ## Configuration
-Coming shortly...
+You can configure the middleware when adding it in the Startup.cs:
+```cs
+services.AddFacebookLogin(options =>
+{
+    //options.Route = ...
+});
+```
+
+<table>
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Default value</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Route</td>
+            <td>"/api/session/facebook"</td>
+            <td>The route to your controller</td>
+        </tr>
+        <tr>
+            <td>Fields</td>
+            <td>["email", "name", "picture.width(300).height(300)"]</td>
+            <td>Fields that will be requested from Facebook</td>
+        </tr>
+        <tr>
+            <td>ConfigurationKeys</td>
+            <td>
+                <pre lang="cs">{
+    AppId = "Authentication:Facebook:AppId",
+    AppSecret = "Authentication:Facebook:AppSecret",
+    RedirectUri = "Authentication:Facebook:RedirectUri"
+}</pre>     </td>
+            <td>Configuration keys pointing to your appsettings.json</td>
+        </tr>
+    </tbody>
+</table>
 
 ## Examples
 Coming shortly...
