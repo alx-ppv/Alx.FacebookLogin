@@ -1,28 +1,16 @@
 ﻿using System;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Alx.FacebookLogin.Data;
 using Alx.FacebookLogin.Data.Dtos;
 using static System.Net.WebUtility;
+using Microsoft.AspNetCore.Http;
 
 namespace Alx.FacebookLogin
 {
-    public class FacebookLoginMiddleware
+    public class FacebookLoginMiddleware(RequestDelegate next, IConfiguration configuration, IHttpClientFactory clientFactory)
     {
-        private readonly RequestDelegate next;
-        private readonly IConfiguration configuration;
-        private readonly IHttpClientFactory clientFactory;
-
-        public FacebookLoginMiddleware(RequestDelegate next, IConfiguration configuration, IHttpClientFactory clientFactory)
-        {
-            this.next = next;
-            this.configuration = configuration;
-            this.clientFactory = clientFactory;
-        }
-
         public async Task InvokeAsync(HttpContext context, FacebookLoginService fbService, FacebookLoginOptions fbOptions)
         {
             try
@@ -34,8 +22,11 @@ namespace Alx.FacebookLogin
                     throw new ArgumentException("Query parameter 'code' does not exist");
                 }
 
+                var graphVersion = configuration[fbOptions.ConfigurationKeys.APIVersion] ?? "20.0";
+
                 var accessTokenRequest = new HttpRequestMessage(HttpMethod.Get,
-                    string.Format("https://graph.facebook.com/v6.0/oauth/access_token?client_id={0}&client_secret={1}&redirect_uri={2}&code={3}",
+                    string.Format("https://graph.facebook.com/v{0}/oauth/access_token?client_id={1}&client_secret={2}&redirect_uri={3}&code={4}",
+                        graphVersion,
                         configuration[fbOptions.ConfigurationKeys.AppId],
                         configuration[fbOptions.ConfigurationKeys.AppSecret],
                         UrlEncode(configuration[fbOptions.ConfigurationKeys.RedirectUri]),

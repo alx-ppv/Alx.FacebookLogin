@@ -16,7 +16,8 @@ namespace Alx.FacebookLogin.Data
             {
                 AppId = "Authentication:Facebook:AppId",
                 AppSecret = "Authentication:Facebook:AppSecret",
-                RedirectUri = "Authentication:Facebook:RedirectUri"
+                RedirectUri = "Authentication:Facebook:RedirectUri",
+                APIVersion = "Authentication:Facebook:APIVersion",
             };
         }
     }

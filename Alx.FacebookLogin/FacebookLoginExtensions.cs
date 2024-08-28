@@ -1,12 +1,10 @@
 ﻿using System;
-using System.IO;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Alx.FacebookLogin.Data;
 using Alx.FacebookLogin.Data.Dtos;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Alx.FacebookLogin
